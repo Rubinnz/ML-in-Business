@@ -3,31 +3,26 @@ from flask_mysqldb import MySQL
 
 app = Flask(__name__)
 
-# MySQL configurations
+# Cấu hình MySQL
 app.config['MYSQL_USER'] = 'root'
-app.config['MYSQL_PASSWORD'] = '@Obama123'
+app.config['MYSQL_PASSWORD'] = 'khanh24072004'
 app.config['MYSQL_DB'] = 'studentmanagement'
 app.config['MYSQL_HOST'] = 'localhost'
+app.config['MYSQL_PORT'] = 3306  # Cổng MySQL (nếu không phải 3306, hãy thay đổi)
+# app.config['MYSQL_UNIX_SOCKET'] = '/var/run/mysqld/mysqld.sock'  # Chỉ thêm nếu dùng socket
 
 mysql = MySQL(app)
 
 try:
-    # Sử dụng application context
     with app.app_context():
-        conn = mysql.connection  # Kết nối MySQL
+        conn = mysql.connection
         print("Connection is successful!")
         cursor = conn.cursor()
-
-        # Thực thi truy vấn SQL
         cursor.execute("SELECT * FROM student")
         data = cursor.fetchall()
-        print("ID\tCode\tName")
-        for item in data:
-            print(item[0], "\t", item[1], "\t", item[2])
-
+        print(data)
 except Exception as e:
     print("Error = ", e)
-
 finally:
     if 'cursor' in locals() and cursor:
         cursor.close()
