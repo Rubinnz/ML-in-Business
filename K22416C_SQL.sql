@@ -1,0 +1,1 @@
+SELECT * FROM k22416c_sales.chitiethoadon;
