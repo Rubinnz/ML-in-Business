@@ -1,7 +1,6 @@
 from salesmanagement.libs.connector import MySQLConnector
 from salesmanagement.models.nhanvien import NhanVien
 
-
 class NhanVienConnector(MySQLConnector):
     def dang_nhap(self,username,password):
         cursor=self.conn.cursor()
@@ -11,9 +10,9 @@ class NhanVienConnector(MySQLConnector):
         dataset = cursor.fetchone()
         nv=None# giả sử không tìm thấy nhân viên đúng theo USERname +password
         if dataset != None:
-            id, manhanvien, tennhanvien, username, password, isdeleted = dataset
+            ID, manhanvien, tennhanvien, username, password, isdelete = dataset
             #vào được đây tức là có nhân viên
-            nv=NhanVien(id,manhanvien,tennhanvien,username,password,isdeleted)
+            nv=NhanVien(ID,manhanvien,tennhanvien,username,password,isdelete)
         cursor.close()
         return nv
 

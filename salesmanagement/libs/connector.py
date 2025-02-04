@@ -8,7 +8,7 @@ class MySQLConnector:
             self.port = 3306
             self.database = "k22416c_sales"
             self.username = "root"
-            self.password = "@Obama123"
+            self.password = "Khanh24072004@"
         else:
             self.server = server
             self.port = port

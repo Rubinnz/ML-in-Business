@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>606</width>
+    <width>695</width>
     <height>481</height>
    </rect>
   </property>
@@ -17,9 +17,9 @@
    <widget class="QLabel" name="label">
     <property name="geometry">
      <rect>
-      <x>60</x>
-      <y>140</y>
-      <width>521</width>
+      <x>40</x>
+      <y>160</y>
+      <width>611</width>
       <height>61</height>
      </rect>
     </property>
@@ -38,8 +38,8 @@ font: 36pt &quot;MS Shell Dlg 2&quot;;</string>
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>606</width>
-     <height>22</height>
+     <width>695</width>
+     <height>26</height>
     </rect>
    </property>
   </widget>
