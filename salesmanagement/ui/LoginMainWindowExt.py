@@ -1,3 +1,5 @@
+import traceback
+
 from PyQt6.QtCore import Qt
 from PyQt6.QtWidgets import QMessageBox, QMainWindow
 
@@ -21,28 +23,25 @@ class LoginMainWindowExt(Ui_MainWindow):
 
     def xuly_dangnhap(self):
         try:
-            username = self.lineEditUserName.text()
-            password = self.lineEditPassword.text()
-
-            # Kết nối MySQL và kiểm tra đăng nhập
+            username=self.lineEditUserName.text()
+            password=self.lineEditPassword.text()
+            #giả lập đăng nhập (hôm sau truy vấn thật trong CSDL)
+            #gọi kết nối cơ sở dữ liệu MySQL
+            #---Qua tết xử lý tiếp MySQL
             self.nvconnector.connect()
-            self.nvlogin = self.nvconnector.dang_nhap(username, password)
-
-            if self.nvlogin is not None:
-                print("[DEBUG] Chuyển sang màn hình chính...")
+            self.nvlogin=self.nvconnector.dang_nhap(username,password)
+            if self.nvlogin!=None:
+            #if username=="admin" and password=="123":
                 self.MainWindow.hide()
-
-                # Giữ lại tham chiếu tới cửa sổ chính
                 self.mainwindow = QMainWindow()
                 self.myui = MainProgramMainWindowExt()
                 self.myui.setupUi(self.mainwindow)
                 self.myui.showWindow()
             else:
-                print("[DEBUG] Đăng nhập thất bại.")
-                self.msg = QMessageBox()
+                self.msg=QMessageBox()
                 self.msg.setWindowTitle("Login thất bại")
                 self.msg.setText("Bạn đăng nhập thất bại.\nKiểm tra lại thông tin đăng nhập")
                 self.msg.setIcon(QMessageBox.Icon.Critical)
-                self.msg.exec()
-        except Exception as e:
-            print(f"[ERROR] Lỗi khi đăng nhập: {e}")
+                self.msg.show()
+        except:
+            traceback.print_exc()
