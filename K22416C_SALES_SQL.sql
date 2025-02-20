@@ -38,4 +38,14 @@ order by TongTriSoHoaDon desc
 limit 1;
 
 
-/* Câu 9: Viết chức 
+/* Câu 9: Viết chức năng đăng nhập hệ thống */
+select *
+from nhanvien
+where username = 'teoteo' and password = '123'
+
+
+SELECT user, host, authentication_string FROM mysql.user WHERE user='root';nhanvienstudent
+
+
+
+
