@@ -61,7 +61,7 @@ class ProductMainWindowEXT(Ui_MainWindow):
             self.current_selected_dm = dm
 
             # Hiển thị sản phẩm trong bảng
-            self.hienthi_danhsach_sanpham_len_Qtable()s
+            self.hienthi_danhsach_sanpham_len_Qtable()
         except Exception as e:
             self.show_error_message("Lỗi khi tải danh sách sản phẩm", str(e))
 
