@@ -111,3 +111,25 @@ def print_cluster_details(conn, df2):
 
 
 print_cluster_details(conn, df2)
+
+
+import plotly.express as px
+
+# Vẽ biểu đồ 3D với plotly
+def visualizeKMeans3D(df, X, y_kmeans, cluster, title, xlabel, ylabel, zlabel):
+    fig = px.scatter_3d(
+        df,
+        x=X[:, 0], y=X[:, 1], z=X[:, 2],
+        color=y_kmeans.astype(str),
+        title=title,
+        labels={'x': xlabel, 'y': ylabel, 'z': zlabel},
+        color_continuous_scale='Viridis'
+    )
+    fig.show()
+
+# Thêm một cột 'Annual Income' vào X
+X_3D = df2[['Age', 'Spending Score', 'Annual Income']].values
+df2["cluster"], centroids = runKMeans(X_3D, 4)
+
+# Vẽ biểu đồ 3D
+visualizeKMeans3D(df2, X_3D, df2["cluster"].values, 4, "Clusters of Customers in 3D", "Age", "Spending Score", "Annual Income")
